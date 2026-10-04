@@ -13,7 +13,7 @@ const SystemStatus = () => {
     const fetchStatus = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/system/status`);
-        if (!response.ok) throw new Error('Failed to fetch system status`);
+        if (!response.ok) throw new Error('Failed to fetch system status');
         const data = await response.json();
         setStatus(data);
         setLastUpdated(new Date());

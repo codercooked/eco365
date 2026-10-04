@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "../config";
+
 import React, { useState, useEffect } from 'react';
 import {
   AreaChart,
@@ -22,7 +24,7 @@ const Analytics = () => {
     const fetchAnalytics = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/analytics?period=${period}`);
+        const response = await fetch(`${API_BASE_URL}/api/analytics?period=${period}`);
         if (!response.ok) throw new Error('Failed to fetch analytics data');
         const result = await response.json();
         setData(result);

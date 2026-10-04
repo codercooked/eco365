@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "../config";
+
 import React, { useState, useEffect } from 'react';
 import { getTimeSince } from '../utils/format';
 import './SystemStatus.css';
@@ -10,8 +12,8 @@ const SystemStatus = () => {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const response = await fetch('/api/system/status');
-        if (!response.ok) throw new Error('Failed to fetch system status');
+        const response = await fetch(`${API_BASE_URL}/api/system/status`);
+        if (!response.ok) throw new Error('Failed to fetch system status`);
         const data = await response.json();
         setStatus(data);
         setLastUpdated(new Date());

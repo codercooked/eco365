@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "../config";
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
@@ -38,9 +40,9 @@ const MachineDetail = () => {
     setLoading(true);
     try {
       const [machineRes, eventsRes, rpmRes] = await Promise.all([
-        fetch(`/api/machines/${id}`),
-        fetch(`/api/machines/${id}/events`),
-        fetch(`/api/machines/${id}/rpm-history?period=${period}`)
+        fetch(`${API_BASE_URL}/api/machines/${id}`),
+        fetch(`${API_BASE_URL}/api/machines/${id}/events`),
+        fetch(`${API_BASE_URL}/api/machines/${id}/rpm-history?period=${period}`)
       ]);
 
       if (!machineRes.ok) throw new Error('Failed to fetch machine details');

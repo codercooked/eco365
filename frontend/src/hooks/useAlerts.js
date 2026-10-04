@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "../config";
+
 import { useState, useEffect, useCallback } from 'react';
 import { useSocket } from '../context/SocketContext';
 
@@ -9,7 +11,7 @@ export function useAlerts() {
   const fetchAlerts = useCallback(async (status) => {
     try {
       const url = status ? `/api/alerts?status=${status}` : '/api/alerts';
-      const res = await fetch(url);
+      const res = await fetch(`${API_BASE_URL}${url}`);
       const data = await res.json();
       setAlerts(data);
       setLoading(false);
@@ -43,7 +45,7 @@ export function useAlerts() {
   }, [socket]);
 
   const acknowledgeAlert = async (id) => {
-    await fetch(`/api/alerts/${id}`, { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ status: 'ACKNOWLEDGED' }) });
+    await fetch(`${API_BASE_URL}/api/alerts/${id}`, { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ status: 'ACKNOWLEDGED' }) });
     setAlerts(prev => prev.map(a => a.id === id ? { ...a, status: 'ACKNOWLEDGED', acknowledged_at: new Date().toISOString() } : a));
   };
 

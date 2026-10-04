@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "../config";
+
 import { useState, useEffect, useCallback } from 'react';
 import { useSocket } from '../context/SocketContext';
 
@@ -8,7 +10,7 @@ export function useMachines() {
 
   const fetchMachines = useCallback(async () => {
     try {
-      const res = await fetch('/api/machines');
+      const res = await fetch(`${API_BASE_URL}/api/machines`);
       const data = await res.json();
       setMachines(data);
       setLoading(false);

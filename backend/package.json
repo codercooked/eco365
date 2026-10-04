@@ -1,0 +1,17 @@
+{
+  "name": "eco365-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "socket.io": "^4.7.2",
+    "sql.js": "^1.10.3",
+    "node-cron": "^3.0.3",
+    "uuid": "^9.0.0"
+  }
+}

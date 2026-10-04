@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+eco365.db
+dist/
+build/
+.env
+.env.local
